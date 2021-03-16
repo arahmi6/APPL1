@@ -34,8 +34,10 @@ public class Salesperson implements Comparable  {
     // (last, then first) breaking a tie.  
     //--------------------------------------------------   
     public int compareTo(Object other)  {  
-        int result;  
-        return result;  
+        int result = Integer.compare(getSales(),((Salesperson)other).getSales());
+        if(result == 0)
+            return getFirstName().compareTo(((Salesperson)other).getFirstName())*-1;
+        return result;
     }  
     //-------------------------  
     // First name accessor.  
