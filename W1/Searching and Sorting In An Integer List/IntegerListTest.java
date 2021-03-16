@@ -44,11 +44,49 @@ public class IntegerListTest  {
                 if (loc != -1)  
                     System.out.println("Found at location " + loc);   
                 else  
-                    System.out.println("Not in list");  
+                    System.out.println("Not found");  
                 break;  
             case 4:  
                 list.print();  
-                break;  
+                break;
+            case 5:
+                System.out.println("Old Value = ");
+                int oldVal = scan.nextInt();
+                loc = list.search(oldVal);
+                if (loc != -1){
+                    System.out.println("New Value = ");
+                    int newVal = scan.nextInt();
+                    list.replaceFirst(oldVal, newVal);
+                }
+                else{
+                    System.out.println("Not found");
+                }
+                break;
+            case 6:
+                System.out.println("Old Value = ");
+                int oldVal2 = scan.nextInt();
+                loc = list.search(oldVal2);
+                if (loc != -1){
+                    System.out.println("New Value = ");
+                    int newVal2 = scan.nextInt();
+                    list.replaceAll(oldVal2, newVal2);
+                }
+                else{
+                    System.out.println("Not found");
+                }
+                break;
+            case 7:
+                list.sortDecreasing();
+                break;
+            case 8:
+                System.out.print("Enter the value to look for: ");
+                int target = scan.nextInt();
+                loc = list.binarySearchD(target); 
+                if (loc != -1)
+                    System.out.println("Found at " + loc);
+                else
+                    System.out.println("Not found");
+                break;
             default:  
             System.out.println("Sorry, invalid choice");  
         }  
@@ -61,10 +99,13 @@ public class IntegerListTest  {
         System.out.println(" ====");  
         System.out.println("0: Quit");  
         System.out.println("1: Create a new list (** do this first!! **)");   
-        System.out.println("2: Sort the list using selection sort");   
+        System.out.println("2: Sort the list using selection sort (ascending)");   
         System.out.println("3: Find an element in the list using linear search");   
-        System.out.println("4: Print the list");  
-        System.out.print("\nEnter your choice: ");  
-    }  
+        System.out.println("4: Print the list");
+        System.out.println("5: Replace First");
+        System.out.println("6: Replace All");
+        System.out.println("7: Sort the list using selection sort (descending)");
+        System.out.println("8: Find an element in the list using binary search (decreasing order)");
+        System.out.print("\nEnter your choice: "); 
+    }   
 } 
-
