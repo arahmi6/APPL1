@@ -81,16 +81,18 @@ public class IntegerList  {
         }  
     }
     public int binarySearchD (int target){
-        int left = 0;
-        int right = list.length - 1;
-        while (left <= right) {
-            int mid = left + (right - left)/2;   
-            if (list[mid] < target) {
-                right = mid - 1;
-            } else if (list[mid] > target) {
-                left  = mid + 1;
-            } else {
-                return mid;
+        int head = 0;
+        int tail = list.length - 1;
+        while (head <= tail) {
+            int x = head + (tail - head)/2;   
+            if (list[x] < target) {
+                tail = x - 1;
+            } 
+            else if (list[x] > target) {
+                head  = x + 1;
+            } 
+            else {
+                return x;
             }
         }
         return -1;
