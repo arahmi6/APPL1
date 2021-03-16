@@ -57,6 +57,17 @@ public class CirclePanel extends JPanel  {
         buttonColor.add(blue);  
         buttonColor.add(black);
         this.add(buttonColor, "North");
+        
+        //set background
+        red.setBackground(Color.RED);
+        green.setBackground(Color.GREEN);   
+        blue.setBackground(Color.BLUE);   
+        black.setBackground(Color.BLACK);
+        //foreground of each button
+        red.setForeground(Color.WHITE);
+        green.setForeground(Color.WHITE);   
+        blue.setForeground(Color.WHITE);   
+        black.setForeground(Color.WHITE);
     }  
     //---------------------------------------------------------------   
     // Draw circle on CirclePanel  
