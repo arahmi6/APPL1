@@ -2,7 +2,6 @@
 // FILE: IntegerListTest.java  
 //  
 // Purpose: Provide a menu-driven tester for the IntegerList class.  
-//  
 // ****************************************************************  
 import java.util.Scanner;  
 public class IntegerListTest  {  
@@ -33,12 +32,14 @@ public class IntegerListTest  {
                 System.out.println("Bye!");  
                 break;  
             case 1:  
-                System.out.println(list);  
+                list.print();  
                 break;  
-            case 2:  
+            case 2:
                 System.out.println("How big should the list be?");   
-                list = new IntegerList(scan.nextInt());   
-                System.out.println("List is created."); 
+                int size = scan.nextInt();  
+                list = new IntegerList(size);  
+                list.randomize();  
+                System.out.println("List is created.");   
                 break;  
             case 3:  
                 list.randomize();  
