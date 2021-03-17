@@ -3,7 +3,9 @@
 //  
 // Purpose: Provide a menu-driven tester for the IntegerList class.  
 // ****************************************************************  
-import java.util.Scanner;  
+import java.util.Scanner;
+import java.util.*;
+import java.lang.*;
 public class IntegerListTest  {  
     static IntegerList list = new IntegerList(10);  
     static Scanner scan = new Scanner(System.in);  
@@ -36,8 +38,7 @@ public class IntegerListTest  {
                 break;  
             case 2:
                 System.out.println("How big should the list be?");   
-                int size = scan.nextInt();  
-                list = new IntegerList(size);  
+                list = new IntegerList(scan.nextInt());  
                 list.randomize();  
                 System.out.println("List is created.");   
                 break;  
@@ -51,8 +52,11 @@ public class IntegerListTest  {
                 break;  
             case 5:  
                 System.out.print("Enter the value to look for: ");   
-                val = scan.nextInt();  
-                loc = list.linearSearch(val);  
+                val = scan.nextInt();
+                time1 = System.currentTimeMillis();
+                loc = list.linearSearch(val);
+                time2 = System.currentTimeMillis();
+                System.out.println("Time in milliseconds: " + (time2 - time1));
                 if (loc != -1)  
                     System.out.println("Found at location " + loc);   
                 else  
@@ -60,19 +64,28 @@ public class IntegerListTest  {
                 break;  
             case 6:  
                 System.out.print("Enter the value to look for: ");   
-                val = scan.nextInt();  
-                loc = list.binarySearch(val);  
+                val = scan.nextInt();
+                time1 = System.currentTimeMillis();
+                loc = list.binarySearch(val);
+                time2 = System.currentTimeMillis();
+                System.out.println("Time in milliseconds: " + (time2 - time1));
                 if (loc != -1)  
                     System.out.println("Found at location " + loc);   
                 else  
                     System.out.println("Not in list");  
                 break;  
-            case 7:  
-                list.sortIncreasing();  
+            case 7:
+                time1 = System.currentTimeMillis();
+                list.sortIncreasing();
+                time2 = System.currentTimeMillis();
+                System.out.println("Time in milliseconds: " + (time2 - time1));
                 System.out.println("List has been sorted.");  
                 break;  
-            case 8:  
-                list.sortDecreasing();  
+            case 8:
+                time1 = System.currentTimeMillis();
+                list.sortDecreasing();
+                time2 = System.currentTimeMillis();
+                System.out.println("Time in milliseconds: " + (time2 - time1));
                 System.out.println("List has been sorted.");  
                 break;  
             default:  
