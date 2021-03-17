@@ -11,14 +11,15 @@ import java.awt.event.*;
 import javax.swing.*;  
 import javax.swing.event.*;  
 public class SpeedControlPanel extends JPanel {  
-    private final int WIDTH = 600;  
-    private final int HEIGHT = 400;  
-    private final int BALL_SIZE = 50;  
-    private Circle bouncingBall; // the object that moves   private Timer timer;  
+    private int WIDTH = 600;  
+    private int HEIGHT = 400;  
+    private int BALL_SIZE = 50;  
+    private Circle bouncingBall; // the object that moves   
+    private Timer timer;  
     private int moveX, moveY; // increment to move each time
     private JSlider slide;
-    private Timer timer;
     private JLabel label;
+    JPanel panel = new JPanel();
     // ---------------------------------------------   
     // Sets up the panel, including the timer  
     // for the animation  
@@ -48,12 +49,17 @@ public class SpeedControlPanel extends JPanel {
         
         label = new JLabel("Timer Delay");
         label.setAlignmentX(Component.LEFT_ALIGNMENT);
+        
+        panel.add(label);
+        panel.add(slide);
+        this.add(panel, "South");
     }
     
     // --------------------  
     // Draw the ball  
-    // --------------------  
-    public void paintComponent (Graphics page)  {  
+    // --------------------
+    @Override
+    public void paintComponent(Graphics page){  
         super.paintComponent (page);  
         bouncingBall.draw(page);  
     }  
@@ -65,14 +71,16 @@ public class SpeedControlPanel extends JPanel {
         // actionPerformed is called by the timer -- it updates   
         // the position of the bouncing ball  
         // ----------------------------------------------------   
+        @Override
         public void actionPerformed(ActionEvent action)   {  
-           bouncingBall.move(moveX, moveY);  
+            bouncingBall.move(moveX, moveY);
+            int panelHt = panel.getSize().height;
             // change direction if ball hits a side   
             int x = bouncingBall.getX();  
             int y = bouncingBall.getY();  
             if (x < 0 || x >= WIDTH - BALL_SIZE)   
-                moveX = moveX * -1;  
-            if (y <= 0 || y >= HEIGHT - BALL_SIZE)   
+                moveX = moveX * -1;
+            if (y <= 0 || y >= HEIGHT - panelHt - BALL_SIZE)  
                 moveY = moveY * -1;  
             repaint();  
         }  
@@ -81,10 +89,10 @@ public class SpeedControlPanel extends JPanel {
     // A change listener for the slider.  
     // *****************************************************   
     private class SlideListener implements ChangeListener   {  
-    // -------------------------------------------------   
-    // Called when the state of the slider has changed;   
-    // resets the delay on the timer.  
-    // -------------------------------------------------   
+        // -------------------------------------------------   
+        // Called when the state of the slider has changed;   
+        // resets the delay on the timer.  
+        // -------------------------------------------------   
         public void stateChanged (ChangeEvent event){
             int speed = slide.getValue();
             timer.setDelay(speed);
