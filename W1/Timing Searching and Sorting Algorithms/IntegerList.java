@@ -7,6 +7,7 @@
 // ****************************************************************  
 import java.util.Scanner;
 import java.util.*;
+import java.lang.*;
 public class IntegerList  {  
     int[] list; //values in the list  
     //------------------------------------------------------------   
@@ -20,9 +21,15 @@ public class IntegerList  {
     // randomize -- fills the array with randomly generated integers   
     // between 1 and 100, inclusive  
     //------------------------------------------------------------   
-    public void randomize()  {   
-        for (int i=0; i<list.length; i++)  
-            list[i] = (int)(Math.random() * 100) + 1;   
+    public void randomize()  {
+        if(list.length <= 100){
+           for (int i=0; i<list.length; i++)  
+                list[i] = (int)(Math.random() * 100) + 1; 
+        }else{
+            for (int i=0; i<list.length; i++)  
+                list[i] = (int)(Math.random() * list.length) + 1;
+        }
+           
     }
     public void print()  {  
         for (int i=0; i<list.length; i++)  
