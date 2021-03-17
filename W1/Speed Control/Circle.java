@@ -7,8 +7,10 @@
 import java.awt.*;  
 import java.util.Random;  
 public class Circle  {  
-    private int x, y; // coordinates of the corner   private int radius; 
-    // radius of the circle   private Color color; 
+    private int x, y; // coordinates of the corner   
+    private int radius; 
+    // radius of the circle   
+    private Color color; 
     // color of the circle  
     static Random generator = new Random();  
     //---------------------------------------------------------   
@@ -64,4 +66,3 @@ public class Circle  {
         return y;  
     }  
 }
-
