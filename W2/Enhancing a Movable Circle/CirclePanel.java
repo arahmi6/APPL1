@@ -36,6 +36,11 @@ public class CirclePanel extends JPanel{
         right.addActionListener(new MoveListener(20,0));
         up.addActionListener(new MoveListener(0,-20));
         down.addActionListener(new MoveListener(0,20));
+        // Add tooltips to the buttons
+        left.setToolTipText("Move circle to left 20.");
+        right.setToolTipText("Move circle to right 20.");
+        up.setToolTipText("Move circle to up 20.");
+        down.setToolTipText("Move circle to down 20.");
         // Need a panel to put the buttons on or they'll be on
         // top of each other.
         JPanel buttonPanel = new JPanel();
