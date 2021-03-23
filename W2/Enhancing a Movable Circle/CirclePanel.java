@@ -11,6 +11,7 @@ public class CirclePanel extends JPanel{
     private final int CIRCLE_SIZE = 50;
     private int x,y;
     private Color c;
+    JButton left, right, up, down;
     //---------------------------------------------------------------
     // Set up circle and buttons to move it.
     //---------------------------------------------------------------
@@ -22,10 +23,10 @@ public class CirclePanel extends JPanel{
         // Need a border layout to get the buttons on the bottom
         this.setLayout(new BorderLayout());
         // Create buttons to move the circle
-        JButton left = new JButton("Left");
-        JButton right = new JButton("Right");
-        JButton up = new JButton("Up");
-        JButton down = new JButton("Down");
+        left = new JButton("Left");
+        right = new JButton("Right");
+        up = new JButton("Up");
+        down = new JButton("Down");
         // Add mnemonics to the buttons
         left.setMnemonic(KeyEvent.VK_L);
         right.setMnemonic(KeyEvent.VK_R);
@@ -79,6 +80,13 @@ public class CirclePanel extends JPanel{
             x += dx;
             y += dy;
             repaint();
+            
+            // Disable the corresponding button when the circle gets all
+            // the way to an edge.
+            if (x < 20) left.setEnabled(false); else left.setEnabled(true);
+            if (y < 20) up.setEnabled(false); else up.setEnabled(true);
+            if (x > getSize().getWidth() - 80) right.setEnabled(false); else right.setEnabled(true);
+            if (y > getSize().getHeight() - 115) down.setEnabled(false); else down.setEnabled(true);
         }
     }
 }
