@@ -26,6 +26,11 @@ public class CirclePanel extends JPanel{
         JButton right = new JButton("Right");
         JButton up = new JButton("Up");
         JButton down = new JButton("Down");
+        // Add mnemonics to the buttons
+        left.setMnemonic(KeyEvent.VK_L);
+        right.setMnemonic(KeyEvent.VK_R);
+        up.setMnemonic(KeyEvent.VK_U);
+        down.setMnemonic(KeyEvent.VK_D);
         // Add listeners to the buttons
         left.addActionListener(new MoveListener(-20,0));
         right.addActionListener(new MoveListener(20,0));
@@ -45,7 +50,6 @@ public class CirclePanel extends JPanel{
     // Draw circle on CirclePanel
     //---------------------------------------------------------------
     public void paintComponent(Graphics page){
-        Chapter 10: Exceptions 215
         super.paintComponent(page);
         page.setColor(c);
         page.fillOval(x,y,CIRCLE_SIZE,CIRCLE_SIZE);
