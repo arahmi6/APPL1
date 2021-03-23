@@ -14,6 +14,9 @@ public class MathUtils{
         if(n < 0){
             throw new IllegalArgumentException(n + " adalah angka negatif!"); 
         }
+        else if(n > 16){
+            throw new IllegalArgumentException(n + " adalah angka lebih dari 16!");
+        }
         else{
             for (int i=n; i>0; i--)
                 fac *= i;                          
