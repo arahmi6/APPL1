@@ -5,6 +5,7 @@
 // ****************************************************************************
 import java.util.Scanner;
 import java.io.*;
+
 public class Warning{
     // --------------------------------------------------------------------
     // Reads student data (name, semester hours, quality points) from a
@@ -27,9 +28,8 @@ public class Warning{
             PrintWriter outFile = new PrintWriter(outputName);
             
             // Print a header to the output file
-            outFile.println ();
             outFile.println ("Students on Academic Warning");
-            outFile.println ();
+            outFile.println();
             
             // Process the input file, one token at a time
             while (scan.hasNextLine()){
@@ -41,22 +41,23 @@ public class Warning{
                 creditHrs = Integer.parseInt(input[1]);
                 qualityPts = Double.parseDouble(input[2]);
                 gpa = qualityPts/creditHrs;
-                if((gpa < 1.5 && creditHrs < 30) || (gpa < 1.75 && creditHrs < 60)
-                    || (gpa < 2.0)){
-                    outFile.write(name + " "+ creditHrs + " " + gpa + "\n");
-                }
-                // Close output file
-                outFile.close();
+                if(((gpa < 1.5) && (creditHrs < 30)) || ((gpa < 1.75) && (creditHrs < 60))|| (gpa < 2.0)){
+                    outFile.println(name + " " + creditHrs + " " + gpa);
+                }    
             }
+            // Close output file
+            outFile.close();
         }
-        catch (FileNotFoundException exception){
-            System.out.println ("The file " + inputName + " was not found.");
+        catch (FileNotFoundException e){
+            System.out.println("The file " + inputName + " was not found.");
         }
-        catch (IOException exception){
-            System.out.println (exception);
+        catch (IOException e){
+            System.out.println("Something goes wrong with the input or output stream");
         }
         catch (NumberFormatException e){
-            System.out.println ("Format error in input file: " + e);
+            System.out.println("Format error in input file: " + e);
+            System.out.println("Can’t parse an int or double when it tries to"
+                    + "(error in the input file format).");   
         }
     }
 }
