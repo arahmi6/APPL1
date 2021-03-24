@@ -30,7 +30,8 @@ public class PrimePanel extends JPanel{
         
         // Add scrollbar with JScrollPane from JTextArea primeList
         scroll = new JScrollPane(primeList);
-        scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        // Scroll bar appears when the displayed result exceeds the window
+        scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         
         // Add the components to the panel
         add (heading);
