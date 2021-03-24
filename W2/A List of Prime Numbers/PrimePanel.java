@@ -12,6 +12,7 @@ public class PrimePanel extends JPanel{
     private JTextField number;
     private JButton computeButton;
     private JTextArea primeList;
+    private JScrollPane scroll;
     // ----------------------------------------------------------
     // Sets up a panel with a heading, a labeled text field
     // for the user to enter an integer, a button to trigger
@@ -26,12 +27,17 @@ public class PrimePanel extends JPanel{
         computeButton = new JButton ("Click to see all primes up to your number!");
         primeList = new JTextArea (10, 30);
         computeButton.addActionListener(new ButtonListener());
+        
+        // Add scrollbar with JScrollPane from JTextArea primeList
+        scroll = new JScrollPane(primeList);
+        scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        
         // Add the components to the panel
         add (heading);
         add (inputLabel);
         add (number);
         add (computeButton);
-        add (primeList);
+        add (scroll);
         setPreferredSize (new Dimension (400, 320));
         setBackground (Color.yellow);
     }
