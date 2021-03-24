@@ -37,7 +37,3 @@ public class CopyFile {
         } while (fileName.isEmpty());
     }
 }
-/*
-    C:\Users\ASUS\Desktop\TokoBuku\hello.txt
-    C:\Users\ASUS\Desktop\TokoBuku\about.dat
-*/
