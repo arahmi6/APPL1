@@ -7,6 +7,7 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+
 public class RatePanel extends JPanel{
     private double[] rate; // exchange rates
     private String[] currencyName;
@@ -32,15 +33,24 @@ public class RatePanel extends JPanel{
         rate = new double [] {0.0, 1.2103, 0.7351,0.0091, 0.6969,0.0222, 0.0880};
         result = new JLabel (" ------------ ");
         
-        // Let the user select the currency
+        // Currency
         JLabel currency = new JLabel("Currency");
-        selectCurrencyName = new JComboBox (currencyName);
+        selectCurrencyName = new JComboBox(currencyName);
         selectCurrencyName.addActionListener(new ComboListener());
+        
+        // TextField
+        textField = new JTextField("0");
+        textField.setPreferredSize(new Dimension(120,30));
         
         add(title);
         add(result);
         add(currency, "SOUTH");
         add(selectCurrencyName);
+        add(textField);
+        
+        // Modify the layout
+        this.setBackground(new Color(200,164,255));
+        this.setLayout(new GridLayout(4,3,0,10));
     }
     // ******************************************************
     // Represents an action listener for the combo box.
@@ -52,8 +62,9 @@ public class RatePanel extends JPanel{
         // displays the value in U.S. Dollars.
         // --------------------------------------------------
         public void actionPerformed(ActionEvent event){
-            int index = 0;
-            result.setText ("1 " + currencyName[index] +" = " + rate[index] + " U.S. Dollars");
+            int index = selectCurrencyName.getSelectedIndex();
+            result.setText (textField.getText() +" " + currencyName[index] + " = " 
+            + (rate[index] * Integer.valueOf(textField.getText())) + " U.S. Dollars");
         }
     }
 }
